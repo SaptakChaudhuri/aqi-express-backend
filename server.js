@@ -4,7 +4,13 @@ const dayjs = require('dayjs');
 const cors = require('cors');
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: 'https://preeminent-griffin-da3e5b.netlify.app', // ✅ your frontend domain
+    methods: ['GET', 'POST'],
+    credentials: false,
+  })
+);
 app.use(express.json());
 
 const FLASK_API_URL = 'https://aqi-flask-ml-api.onrender.com/predict'; // 🔁 <--- YOUR FLASK URL
